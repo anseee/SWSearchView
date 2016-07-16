@@ -12,6 +12,8 @@
 		5C9936221D39C098007BA1F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9936201D39C098007BA1F6 /* Main.storyboard */; };
 		5C9936241D39C098007BA1F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9936231D39C098007BA1F6 /* Assets.xcassets */; };
 		5C9936271D39C098007BA1F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9936251D39C098007BA1F6 /* LaunchScreen.storyboard */; };
+		5C9936311D39C98A007BA1F6 /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9936301D39C98A007BA1F6 /* SearchBarCell.swift */; };
+		5C9936331D39C9A2007BA1F6 /* SearchBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C9936321D39C9A2007BA1F6 /* SearchBarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		5C9936231D39C098007BA1F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C9936261D39C098007BA1F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C9936281D39C098007BA1F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C9936301D39C98A007BA1F6 /* SearchBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
+		5C9936321D39C9A2007BA1F6 /* SearchBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				5C9936231D39C098007BA1F6 /* Assets.xcassets */,
 				5C9936251D39C098007BA1F6 /* LaunchScreen.storyboard */,
 				5C9936281D39C098007BA1F6 /* Info.plist */,
+				5C9936301D39C98A007BA1F6 /* SearchBarCell.swift */,
+				5C9936321D39C9A2007BA1F6 /* SearchBarCell.xib */,
 			);
 			path = SWSearchViewForSwift;
 			sourceTree = "<group>";
@@ -123,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C9936271D39C098007BA1F6 /* LaunchScreen.storyboard in Resources */,
+				5C9936331D39C9A2007BA1F6 /* SearchBarCell.xib in Resources */,
 				5C9936241D39C098007BA1F6 /* Assets.xcassets in Resources */,
 				5C9936221D39C098007BA1F6 /* Main.storyboard in Resources */,
 			);
@@ -136,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C99361F1D39C098007BA1F6 /* ViewController.swift in Sources */,
+				5C9936311D39C98A007BA1F6 /* SearchBarCell.swift in Sources */,
 				5C99361D1D39C098007BA1F6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

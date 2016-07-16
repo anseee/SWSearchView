@@ -26,13 +26,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count // 1 is Search Bar Cell
+        return self.items.count + 1// 1 is Search Bar Cell
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
 
-        cell.textLabel?.text = self.items[indexPath.row] // 1 is Search Bar Cell
+        if (indexPath.row > 0) {
+            cell.textLabel?.text = self.items[indexPath.row - 1] // 1 is Search Bar Cell
+        }
         
         return cell
     }
