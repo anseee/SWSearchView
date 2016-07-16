@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.registerNib(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,13 +31,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        
+        if (indexPath.row == 0) {
 
-        if (indexPath.row > 0) {
+            let cell:SearchBarCell = self.tableView.dequeueReusableCellWithIdentifier("searchBarCell")! as! SearchBarCell
+            
+            return cell
+            
+        } else {
+
+            let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+            
             cell.textLabel?.text = self.items[indexPath.row - 1] // 1 is Search Bar Cell
+            
+            return cell
+            
         }
         
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
