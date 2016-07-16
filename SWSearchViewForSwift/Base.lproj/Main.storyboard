@@ -101,7 +101,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYk-T7-kLn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="mO5-ku-Qdd">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Input text" translatesAutoresizingMaskIntoConstraints="NO" id="mO5-ku-Qdd">
                                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                         <color key="barTintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -124,7 +124,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sCX-kG-jk5" firstAttribute="top" secondItem="WYk-T7-kLn" secondAttribute="bottom" id="2gZ-m9-rjH"/>
                             <constraint firstAttribute="trailing" secondItem="sCX-kG-jk5" secondAttribute="trailing" id="48A-fC-00I"/>

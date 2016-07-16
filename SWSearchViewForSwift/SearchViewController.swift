@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -16,8 +16,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        self.searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +26,10 @@ class SearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        NSNotificationCenter.defaultCenter().postNotificationName("hideSearchContainerView", object: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

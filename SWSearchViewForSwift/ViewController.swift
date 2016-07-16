@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.registerNib(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("hideSearchContainerView"), name: "hideSearchContainerView", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,5 +73,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    // MARK: Notifications
+    
+    func hideSearchContainerView() {
+        UIView.animateWithDuration(0.25, animations: {
+            self.containerView.alpha = 0
+            self.naviViewTopConstraint.constant = 0
+            self.searchViewController.searchBar.resignFirstResponder()
+            self.view.layoutIfNeeded()
+        })
+    }
 }
 

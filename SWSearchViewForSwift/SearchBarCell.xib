@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <searchBar userInteractionEnabled="NO" contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-da-EXF">
+                    <searchBar userInteractionEnabled="NO" contentMode="redraw" searchBarStyle="minimal" placeholder="Input text" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-da-EXF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
