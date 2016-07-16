@@ -72,6 +72,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="i6g-SC-BOb" id="pkJ-Db-BOY"/>
+                                    <outlet property="delegate" destination="i6g-SC-BOb" id="eot-8a-9QN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
