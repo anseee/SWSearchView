@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var naviViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var items: [String] = ["i", "like", "swift", "language"]
     
@@ -51,7 +52,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if (indexPath.row == 0) {
+            UIView.animateWithDuration(0.25, animations: { 
+                self.naviViewTopConstraint.constant = -64
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 
 }

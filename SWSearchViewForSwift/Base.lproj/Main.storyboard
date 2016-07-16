@@ -73,6 +73,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rcJ-wM-IIV"/>
                     <connections>
+                        <outlet property="naviViewTopConstraint" destination="9Ts-4r-33R" id="jKP-3L-1pz"/>
                         <outlet property="tableView" destination="myD-Yf-QS0" id="Bwb-Fg-nRj"/>
                     </connections>
                 </viewController>
