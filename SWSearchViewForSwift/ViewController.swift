@@ -12,6 +12,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var naviViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
+    
+    weak var searchViewController:SearchViewController!
     var items: [String] = ["i", "like", "swift", "language"]
     
     override func viewDidLoad() {
@@ -25,6 +28,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? SearchViewController {
+            self.searchViewController = vc
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,8 +62,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row == 0) {
-            UIView.animateWithDuration(0.25, animations: { 
+            UIView.animateWithDuration(0.25, animations: {
+                self.containerView.alpha = 1
                 self.naviViewTopConstraint.constant = -64
+                self.searchViewController.searchBar.becomeFirstResponder()
+                self.searchViewController.searchBar.setShowsCancelButton(true, animated: true)
                 self.view.layoutIfNeeded()
             })
         }
