@@ -1,9 +1,12 @@
 # SWSearchView
 Easy and Simple SearchView More than Search Display Controller
 
+## Update List
+2016.07.27 : In Search View, when touch a shadow view, you can dismiss search view
+
 ![Alt Text](https://github.com/anseee/SWSearchView/blob/master/SWSearchView.gif)
 
-The MIT License (MIT)
+## The MIT License (MIT)
 
 Copyright (c) 2016 anseee
 
