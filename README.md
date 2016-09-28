@@ -8,6 +8,9 @@ Easy and Simple SearchView More than Search Display Controller
 #### 2016. 08. 11
 * In Search View, you can find text in array
 
+#### 2016. 09. 29
+* Change to Swift3
+
 ![Alt Text](https://github.com/anseee/SWSearchView/blob/master/SWSearchView.gif)
 
 ## The MIT License (MIT)
