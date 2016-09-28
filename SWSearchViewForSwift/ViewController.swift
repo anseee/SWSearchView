@@ -20,44 +20,47 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.registerNib(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("hideSearchContainerView"), name: "hideSearchContainerView", object: nil)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
+        
+        let notificationName = Notification.Name("hideSearchContainerView")
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.hideSearchContainerView), name: notificationName, object: nil)
+
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? SearchViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SearchViewController {
             self.searchViewController = vc
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count + 1// 1 is Search Bar Cell
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-
-            let cell:SearchBarCell = self.tableView.dequeueReusableCellWithIdentifier("searchBarCell")! as! SearchBarCell
+            
+            let cell:SearchBarCell = self.tableView.dequeueReusableCell(withIdentifier: "searchBarCell")! as! SearchBarCell
             
             return cell
             
         } else {
-
-            let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
             
-            cell.textLabel?.text = self.items[indexPath.row - 1] // 1 is Search Bar Cell
+            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+            
+            cell.textLabel?.text = self.items[indexPath.row - 1]  // 1 is Search Bar Cell
             
             return cell
             
         }
-        
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if (indexPath.row == 0) {
-            UIView.animateWithDuration(0.25, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.containerView.alpha = 1
                 self.naviViewTopConstraint.constant = -64
                 self.searchViewController.searchBar.becomeFirstResponder()
@@ -70,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Notifications
     
     func hideSearchContainerView() {
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.containerView.alpha = 0
             self.naviViewTopConstraint.constant = 0
             self.searchViewController.searchBar.resignFirstResponder()

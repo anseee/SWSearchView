@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var shadowView: UIView!
@@ -25,39 +25,42 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.registerNib(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
-        self.dismissButton .addTarget(self, action: #selector(SearchViewController.dismissView), forControlEvents: .TouchUpInside)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib (nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
+        self.dismissButton.addTarget(self, action: #selector(SearchViewController.dismissView), for: .touchUpInside)
     }
     
     //MARK : custom methods
     
     func dismissView() {
-        NSNotificationCenter.defaultCenter().postNotificationName(NOTI_NAME, object: nil)
+        let notificationName = Notification.Name(NOTI_NAME)
+        self.searchBar.resignFirstResponder()
+        NotificationCenter.default.post(name:notificationName, object: nil)
     }
     
     //MARK: search view delegate and methods
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.shadowView.hidden = false
-        NSNotificationCenter.defaultCenter().postNotificationName(NOTI_NAME, object: nil)
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.shadowView.isHidden = false
+        self.searchBar.resignFirstResponder()
+        let notificationName = Notification.Name(NOTI_NAME)
+        NotificationCenter.default.post(name: notificationName, object: nil)
     }
 
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { // called when text changes (including clear)
 
         if searchText.characters.count == 0 {
             self.isFiltered = false
         } else { 
-            self.shadowView.hidden = true
+            self.shadowView.isHidden = true
             self.isFiltered = true
             self.filteredItems = []
             
             for text in self.items {
-                
-                if text.rangeOfString(searchText, options:.CaseInsensitiveSearch) != nil {
-                    self.filteredItems.append(text)
+
+                if text.range(of: searchText) != nil {
+                   self.filteredItems.append(text)
                 }
-                
             }
             
         }
@@ -67,7 +70,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     
     //MARK: uitableview delegate and datasource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltered {
             return self.filteredItems.count
         } else {
@@ -75,9 +78,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         
         if self.isFiltered {
             cell.textLabel?.text = self.filteredItems[indexPath.row] // 1 is Search Bar Cell
@@ -86,7 +89,5 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         }
         
         return cell
-
     }
-
 }
