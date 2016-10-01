@@ -1,5 +1,6 @@
 # SWSearchView
 [![wercker status](https://app.wercker.com/status/9e0bc54c43f48d220aec684fffb2b110/s/master "wercker status")](https://app.wercker.com/project/bykey/9e0bc54c43f48d220aec684fffb2b110) [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Platform](https://img.shields.io/cocoapods/p/MMCardView.svg?style=flat)](http://cocoapods.org/pods/MMCardView)
 
 Easy and Simple SearchView More than Search Display Controller
 
